@@ -1221,23 +1221,7 @@ body, .glass-card, .glass-nav, form,
   }
   .back-to-top { bottom: 1.5rem; right: 1.5rem; }
 }
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    left: 20px;   /* 👈 change from right to left */
-    background-color: #25D366;
-    color: white;
-    border-radius: 50%;
-    text-align: center;
+.whatsapp-float i {
     font-size: 30px;
     line-height: 60px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    text-decoration: none;
-    z-index: 1000;
-}
-
-.whatsapp-float:hover {
-    background-color: #20ba5a;
 }
