@@ -1225,3 +1225,32 @@ body, .glass-card, .glass-nav, form,
     font-size: 30px;
     line-height: 60px;
 }
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;   /* 👈 bottom-left */
+
+    width: 60px;
+    height: 60px;
+
+    background-color: #25D366;
+    color: white;
+
+    border-radius: 50%;
+    display: flex;              /* 👇 perfect centering */
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    text-decoration: none;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #20ba5a;
+    transform: scale(1.1);
+}
