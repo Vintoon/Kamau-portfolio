@@ -1,32 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My site</title>
-     <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmg0ih7h80e4eqn1lysmb7f3x"></script>
-    <link rel="stylesheet" href="styels.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Victor Kamau — Web Developer</title>
+  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmg0ih7h80e4eqn1lysmb7f3x"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>VICTOR KAMAU</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="contacts.html">Contact</a>
+
+  <!-- Animated background orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <!-- Floating particles -->
+  <div class="particles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="glass-nav">
+      <div class="nav-logo">VK</div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="contacts.html" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Open menu">☰</button>
     </nav>
-    <img src="Gemini_Generated_Image_zc943kzc943kzc94.png" class="avatar" onclick="alert('Hello, I am Victor Kamau!')">
-    <p class="bio">
-        Hello! I'm Victor Kamau, a passionate web developer with a knack for creating dynamic and user-friendly websites. <br>
-    I specialize in front-end development, ensuring that every site I build is not only visually appealing but also highly functional.
-    <br> When I'm not coding, you can find me exploring the latest tech trends or hiking in the great outdoors.
-    </p>
-   <video width="320" height="240" autoplay loop muted>
-  <source src="media.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-    <footer>
-     <p>&copy; 2024 Victor Kamau. All rights reserved.</p>
-    </footer>
+  </header>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-tag reveal-up">Available for work ✦</div>
+        <h1 class="hero-name reveal-up">
+          <span class="name-line">Victor</span>
+          <span class="name-line italic">Kamau</span>
+        </h1>
+        <p class="hero-role reveal-up">Front-End Developer <span class="dot">·</span> Creative Coder</p>
+        <div class="hero-cta reveal-up">
+          <a href="#about" class="btn-primary">Explore My Work</a>
+          <a href="contacts.html" class="btn-ghost">Get In Touch</a>
+        </div>
+      </div>
+
+      <!-- Avatar with glass ring -->
+      <div class="hero-avatar-wrap reveal-right">
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring avatar-ring-2"></div>
+        <img
+          src="Gemini_Generated_Image_zc943kzc943kzc94.png"
+          class="avatar"
+          alt="Victor Kamau"
+          onclick="alert('Hello, I am Victor Kamau!')"
+        />
+        <div class="avatar-badge glass-card">👋 Hello!</div>
+      </div>
+
+      <div class="scroll-hint">
+        <span class="scroll-text">Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- About / Bio Section -->
+    <section class="section about-section" id="about">
+      <div class="section-label reveal-up">01 / About</div>
+      <div class="about-grid">
+        <div class="about-text reveal-up">
+          <h2 class="section-title">Crafting digital<br /><em>experiences</em></h2>
+          <p class="bio-text">
+            Hello! I'm <strong>Victor Kamau</strong>, a passionate web developer with a knack for creating
+            dynamic and user-friendly websites. I specialize in front-end development, ensuring that every
+            site I build is not only visually appealing but also highly functional.
+          </p>
+          <p class="bio-text">
+            When I'm not coding, you can find me exploring the latest tech trends or hiking in the great outdoors.
+          </p>
+          <div class="skills-row">
+            <span class="skill-chip glass-card">HTML & CSS</span>
+            <span class="skill-chip glass-card">JavaScript</span>
+            <span class="skill-chip glass-card">React</span>
+            <span class="skill-chip glass-card">UI/UX</span>
+            <span class="skill-chip glass-card">Responsive Design</span>
+          </div>
+        </div>
+
+        <div class="stats-col reveal-right">
+          <div class="stat-card glass-card">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+          <div class="stat-card glass-card">
+            <span class="stat-num">15+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services-section" id="services">
+      <div class="section-label reveal-up">02 / Services</div>
+      <h2 class="section-title centered reveal-up">What I Do</h2>
+      <div class="services-grid">
+        <div class="service-card glass-card reveal-up" style="--delay:0s">
+          <div class="service-icon">🎨</div>
+          <h3>UI Design</h3>
+          <p>Beautiful, intuitive interfaces designed with users in mind — pixel-perfect and purposeful.</p>
+        </div>
+        <div class="service-card glass-card reveal-up" style="--delay:0.1s">
+          <div class="service-icon">⚡</div>
+          <h3>Front-End Dev</h3>
+          <p>Bringing designs to life with clean, performant HTML, CSS, and modern JavaScript.</p>
+        </div>
+        <div class="service-card glass-card reveal-up" style="--delay:0.2s">
+          <div class="service-icon">📱</div>
+          <h3>Responsive Builds</h3>
+          <p>Sites that look flawless on every screen — from mobile to widescreen.</p>
+        </div>
+        <div class="service-card glass-card reveal-up" style="--delay:0.3s">
+          <div class="service-icon">🚀</div>
+          <h3>Performance</h3>
+          <p>Optimised, fast-loading pages that score high on Core Web Vitals and keep users engaged.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showreel / Video Section -->
+    <section class="section video-section" id="work">
+      <div class="section-label reveal-up">03 / Showreel</div>
+      <h2 class="section-title centered reveal-up">See It In Motion</h2>
+      <div class="video-wrap glass-card reveal-up">
+        <video width="100%" autoplay loop muted playsinline>
+          <source src="media.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay">
+          <span class="video-label">Latest Project ✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Contact Teaser -->
+    <section class="section cta-section reveal-up">
+      <div class="cta-glass glass-card">
+        <p class="cta-eyebrow">Let's collaborate</p>
+        <h2 class="cta-headline">Have a project in mind?</h2>
+        <p class="cta-sub">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+        <a href="contacts.html" class="btn-primary">Start a Conversation →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner glass-card">
+      <span class="footer-name">Victor Kamau</span>
+      <p class="footer-copy">© 2024 Victor Kamau. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="GitHub">GH</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+        <a href="#" aria-label="Twitter">TW</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
