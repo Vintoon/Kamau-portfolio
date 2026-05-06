@@ -1,27 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Contacts</title>
-    <link rel="stylesheet" href="styels.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Victor Kamau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Contact Me</h1>
 
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-    <form action="mailto:ngurubanitransport@gmail.com" method="post" enctype="text/plain">
-        <label for="name">Your name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+  <!-- Animated background orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
 
-        <label for="email">Your Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+  <!-- Floating particles -->
+  <div class="particles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
 
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="5" cols="30" required></textarea><br><br>
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="glass-nav">
+      <div class="nav-logo">VK</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#services" class="nav-link">Services</a></li>
+        <li><a href="index.html#work" class="nav-link">Work</a></li>
+        <li><a href="contacts.html" class="nav-link active">Contact</a></li>
+      </ul>
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+        <button class="menu-toggle" aria-label="Open menu" id="menuToggle">☰</button>
+      </div>
+    </nav>
+  </header>
 
-        <input type="submit" value="Send">
-        <input type="reset" value="Reset">
-    </form>
+  <main>
+
+    <!-- Page Hero -->
+    <div class="contact-hero">
+      <div class="section-label reveal-up">04 / Contact</div>
+      <h1 class="reveal-up">Let's <em style="font-style:italic;color:var(--accent)">Talk</em></h1>
+      <p class="hero-role reveal-up">Have a project in mind? I'd love to hear about it.</p>
+    </div>
+
+    <!-- Two-column layout -->
+    <div class="contact-layout">
+
+      <!-- LEFT: Info cards -->
+      <div class="contact-info-col">
+
+        <div class="contact-info-card glass-card reveal-up">
+          <div class="info-icon">📧</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value">
+              <a href="mailto:ngurubanitransport@gmail.com">ngurubanitransport@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card glass-card reveal-up">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Location</div>
+            <div class="info-value">Nairobi, Kenya 🇰🇪</div>
+          </div>
+        </div>
+
+        <div class="contact-info-card glass-card reveal-up">
+          <div class="info-icon">🟢</div>
+          <div>
+            <div class="info-label">Status</div>
+            <div class="info-value">
+              <span class="availability-dot"></span> Available for new projects
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card glass-card reveal-up">
+          <div class="info-icon">⏱️</div>
+          <div>
+            <div class="info-label">Response Time</div>
+            <div class="info-value">Usually within 24 hours</div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="contact-socials glass-card reveal-up">
+          <div class="contact-socials-title">Find me online</div>
+          <div class="socials-row">
+            <a href="#" class="social-btn" aria-label="GitHub">
+              <span>GH</span> GitHub
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <span>LI</span> LinkedIn
+            </a>
+            <a href="#" class="social-btn" aria-label="Twitter">
+              <span>TW</span> Twitter
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Contact Form -->
+      <div class="contact-form-card glass-card reveal-right">
+
+        <!-- Form -->
+        <div id="formWrapper">
+          <h2>Send a Message</h2>
+          <p class="form-sub">Fill in the details below and I'll get back to you promptly.</p>
+
+          <form id="contactForm" action="https://formsubmit.co/ngurubanitransport@gmail.com" method="POST" novalidate>
+            <!-- FormSubmit honeypot & config -->
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="New message from portfolio!" />
+            <input type="hidden" name="_next" value="#success" />
+            <input type="text" name="_honey" style="display:none" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name <span>*</span></label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="contact-input"
+                  placeholder="Jane Doe"
+                  autocomplete="name"
+                  required
+                />
+                <span class="field-error" id="nameErr">Please enter your name.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address <span>*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="contact-input"
+                  placeholder="jane@example.com"
+                  autocomplete="email"
+                  required
+                />
+                <span class="field-error" id="emailErr">Please enter a valid email.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject <span>*</span></label>
+              <select id="subject" name="subject" class="contact-select" required>
+                <option value="" disabled selected>Select a topic…</option>
+                <option value="New Project">New Project</option>
+                <option value="Freelance Work">Freelance Work</option>
+                <option value="Collaboration">Collaboration</option>
+                <option value="Job Opportunity">Job Opportunity</option>
+                <option value="General Enquiry">General Enquiry</option>
+              </select>
+              <span class="field-error" id="subjectErr">Please select a subject.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="budget">Budget Range <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
+              <select id="budget" name="budget" class="contact-select">
+                <option value="" disabled selected>Select a range…</option>
+                <option value="Under $500">Under $500</option>
+                <option value="$500 – $1,000">$500 – $1,000</option>
+                <option value="$1,000 – $3,000">$1,000 – $3,000</option>
+                <option value="$3,000+">$3,000+</option>
+                <option value="Let's discuss">Let's discuss</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message <span>*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                class="contact-textarea"
+                placeholder="Tell me about your project, goals, timeline…"
+                maxlength="1000"
+                required
+              ></textarea>
+              <div class="char-count" id="charCount">0 / 1000</div>
+              <span class="field-error" id="msgErr">Message must be at least 20 characters.</span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="submitBtn">
+                Send Message →
+              </button>
+              <button type="button" class="btn-reset-ghost" id="resetBtn">
+                Clear form
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Success State -->
+        <div class="form-success" id="successState">
+          <span class="success-icon">🎉</span>
+          <h3 class="success-title">Message Sent!</h3>
+          <p class="success-sub">
+            Thanks for reaching out. I'll get back to you within 24 hours.
+          </p>
+          <button class="btn-ghost" onclick="showFormAgain()">Send Another</button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner glass-card">
+      <span class="footer-name">Victor Kamau</span>
+      <p class="footer-copy">© 2024 Victor Kamau. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="GitHub">GH</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+        <a href="#" aria-label="Twitter">TW</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* ── Scroll Reveal ─────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal-up, .reveal-right');
+    const revObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revObserver.observe(el));
+
+    /* ── Dark Mode ─────────────────────────────────── */
+    const html  = document.documentElement;
+    const btn   = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('vk-theme');
+    if (saved) { html.setAttribute('data-theme', saved); btn.textContent = saved === 'dark' ? '☀️' : '🌙'; }
+    btn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const next   = isDark ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      btn.textContent = next === 'dark' ? '☀️' : '🌙';
+      localStorage.setItem('vk-theme', next);
+    });
+
+    /* ── Scroll Progress ───────────────────────────── */
+    const progressBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      progressBar.style.width = Math.min(pct, 100) + '%';
+    });
+
+    /* ── Back to Top ───────────────────────────────── */
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ── Toast ─────────────────────────────────────── */
+    function showToast(msg, type = '') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = 'toast show ' + type;
+      setTimeout(() => { t.className = 'toast'; }, 3600);
+    }
+
+    /* ── Mobile Menu ───────────────────────────────── */
+    const menuToggle   = document.getElementById('menuToggle');
+    const navLinks     = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('mobile-open');
+      if (open) {
+        Object.assign(navLinks.style, {
+          display:'flex', flexDirection:'column', position:'absolute',
+          top:'70px', right:'1.5rem', borderRadius:'16px',
+          padding:'0.75rem', boxShadow:'0 8px 32px rgba(0,0,0,0.12)',
+          border:'1px solid rgba(255,255,255,0.4)',
+          background:'rgba(255,255,255,0.88)', backdropFilter:'blur(20px)'
+        });
+      } else { navLinks.style.display = ''; }
+    });
+    navLinks.querySelectorAll('.nav-link').forEach(l => {
+      l.addEventListener('click', () => {
+        if (window.innerWidth < 768) { navLinks.style.display = ''; navLinks.classList.remove('mobile-open'); }
+      });
+    });
+
+    /* ── Char Counter ──────────────────────────────── */
+    const msgArea  = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    msgArea.addEventListener('input', () => {
+      const len = msgArea.value.length;
+      charCount.textContent = len + ' / 1000';
+      charCount.className = 'char-count' + (len > 900 ? ' limit' : len > 750 ? ' near' : '');
+    });
+
+    /* ── Form Validation & Submit ──────────────────── */
+    const form = document.getElementById('contactForm');
+    const fields = {
+      name:    { el: document.getElementById('name'),    err: document.getElementById('nameErr'),    validate: v => v.trim().length >= 2 },
+      email:   { el: document.getElementById('email'),   err: document.getElementById('emailErr'),   validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+      subject: { el: document.getElementById('subject'), err: document.getElementById('subjectErr'), validate: v => v !== '' },
+      message: { el: document.getElementById('message'), err: document.getElementById('msgErr'),     validate: v => v.trim().length >= 20 }
+    };
+
+    function validateField(key) {
+      const { el, err, validate } = fields[key];
+      const ok = validate(el.value);
+      el.classList.toggle('error', !ok);
+      err.classList.toggle('show', !ok);
+      return ok;
+    }
+
+    Object.keys(fields).forEach(k => {
+      fields[k].el.addEventListener('blur', () => validateField(k));
+      fields[k].el.addEventListener('input', () => {
+        if (fields[k].el.classList.contains('error')) validateField(k);
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const allValid = Object.keys(fields).map(k => validateField(k)).every(Boolean);
+      if (!allValid) { showToast('Please fix the errors above.', 'error'); return; }
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      try {
+        const data = new FormData(form);
+        await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+        document.getElementById('formWrapper').style.display = 'none';
+        document.getElementById('successState').classList.add('show');
+        showToast('Message sent! I\'ll be in touch soon. ✨', 'success');
+      } catch {
+        showToast('Oops — something went wrong. Please try emailing directly.', 'error');
+        submitBtn.textContent = 'Send Message →';
+        submitBtn.disabled = false;
+      }
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      form.reset();
+      charCount.textContent = '0 / 1000';
+      charCount.className = 'char-count';
+      Object.keys(fields).forEach(k => {
+        fields[k].el.classList.remove('error');
+        fields[k].err.classList.remove('show');
+      });
+      showToast('Form cleared.');
+    });
+
+    function showFormAgain() {
+      document.getElementById('formWrapper').style.display = '';
+      document.getElementById('successState').classList.remove('show');
+      form.reset();
+    }
+
+    /* ── Cursor glow ───────────────────────────────── */
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const glow = document.createElement('div');
+      glow.style.cssText = `position:fixed;pointer-events:none;z-index:9999;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.07) 0%,transparent 70%);transform:translate(-50%,-50%);transition:left 0.4s ease,top 0.4s ease;will-change:left,top;`;
+      document.body.appendChild(glow);
+      document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+    }
+  </script>
 </body>
 </html>
