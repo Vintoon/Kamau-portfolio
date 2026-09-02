@@ -653,29 +653,19 @@ body{
 /* ========= WHATSAPP BUTTON ========= */
 
 .whatsapp-float{
-  position:fixed;
-  right:30px;
-  bottom:30px;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  background:linear-gradient(145deg,#24d366,#5effa2);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:2rem;
-  color:white;
-  text-decoration:none;
-  box-shadow:
-      0 0 30px rgba(36,211,102,.55);
-  z-index:999;
-  transition:.35s;
+    width:58px;
+    height:58px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,.12);
+    color:#7CF7D4;
 }
 
 .whatsapp-float:hover{
-  transform:scale(1.08) translateY(-4px);
+    background:#7CF7D4;
+    color:#041319;
 }
-
 /* ========= SCROLL INDICATOR ========= */
 
 .scroll-hint{
