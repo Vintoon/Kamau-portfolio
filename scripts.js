@@ -1,109 +1,195 @@
-/* scripts.js — Victor Kamau Portfolio */
+/* ==========================================
+   Victor Kamau Portfolio — Liquid Glass JS
+========================================== */
 
-// ── Scroll Reveal ──────────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal-up, .reveal-right');
+// ---------- Mobile Navigation ----------
+const menuBtn = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+menuBtn?.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+  menuBtn.textContent = navLinks.classList.contains("show") ? "✕" : "☰";
+});
+
+// Close menu when a link is clicked
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+    menuBtn.textContent = "☰";
+  });
+});
+
+// ---------- Scroll Reveal ----------
+const revealElements = document.querySelectorAll(".reveal-up, .reveal-right");
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // Stagger children if multiple come in at once
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, i * 80);
-      observer.unobserve(entry.target);
+      entry.target.classList.add("visible");
     }
   });
 }, { threshold: 0.15 });
 
-revealEls.forEach(el => observer.observe(el));
+revealElements.forEach(el => revealObserver.observe(el));
 
-// ── Active Nav on Scroll ───────────────────────────────
-const sections   = document.querySelectorAll('section[id]');
-const navLinks   = document.querySelectorAll('.nav-link');
+// ---------- Active Navigation ----------
+const sections = document.querySelectorAll("section[id]");
+const navItems = document.querySelectorAll(".nav-link");
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => link.classList.remove('active'));
-      const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-      if (active) active.classList.add('active');
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.offsetHeight;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
     }
   });
-}, { threshold: 0.4 });
 
-sections.forEach(sec => navObserver.observe(sec));
+  navItems.forEach(link => {
+    link.classList.remove("active");
 
-// ── Mobile Menu Toggle ─────────────────────────────────
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinksList = document.querySelector('.nav-links');
-
-if (menuToggle && navLinksList) {
-  menuToggle.addEventListener('click', () => {
-    const open = navLinksList.style.display === 'flex';
-    navLinksList.style.display = open ? 'none' : 'flex';
-    navLinksList.style.flexDirection = 'column';
-    navLinksList.style.position = 'absolute';
-    navLinksList.style.top = '70px';
-    navLinksList.style.right = '1.5rem';
-    navLinksList.style.background = 'rgba(255,255,255,0.9)';
-    navLinksList.style.backdropFilter = 'blur(20px)';
-    navLinksList.style.borderRadius = '16px';
-    navLinksList.style.padding = '0.75rem';
-    navLinksList.style.boxShadow = '0 8px 32px rgba(0,0,0,0.12)';
-    navLinksList.style.border = '1px solid rgba(255,255,255,0.5)';
-    if (open) { navLinksList.style.display = ''; }
-  });
-}
-
-// ── Smooth close mobile menu on link click ─────────────
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth < 768) {
-      navLinksList.style.display = '';
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
     }
   });
 });
 
-// ── Cursor glow effect (desktop only) ─────────────────
-if (window.matchMedia('(pointer: fine)').matches) {
-  const glow = document.createElement('div');
-  glow.style.cssText = `
-    position: fixed; pointer-events: none; z-index: 9999;
-    width: 280px; height: 280px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    transition: left 0.4s ease, top 0.4s ease;
-    will-change: left, top;
-  `;
-  document.body.appendChild(glow);
+// ---------- Parallax Background Orbs ----------
+const orbs = document.querySelectorAll(".orb");
 
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top  = e.clientY + 'px';
+window.addEventListener("mousemove", (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 40;
+  const y = (e.clientY / window.innerHeight - 0.5) * 40;
+
+  orbs.forEach((orb, index) => {
+    const speed = (index + 1) * 0.25;
+    orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
   });
-}
+});
 
-// ── Stat counter animation ─────────────────────────────
-const statNums = document.querySelectorAll('.stat-num');
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el    = entry.target;
-      const text  = el.textContent;
-      const num   = parseFloat(text);
-      const suffix = text.replace(/[\d.]/g, '');
-      if (!isNaN(num)) {
-        let start = 0;
-        const step = num / 40;
-        const timer = setInterval(() => {
-          start += step;
-          if (start >= num) { start = num; clearInterval(timer); }
-          el.textContent = (Number.isInteger(num) ? Math.round(start) : start.toFixed(1)) + suffix;
-        }, 30);
-      }
-      statsObserver.unobserve(el);
+// ---------- Liquid Glass Tilt Effect ----------
+const glassCards = document.querySelectorAll(".glass-card");
+
+glassCards.forEach(card => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = ((y / rect.height) - 0.5) * -12;
+    const rotateY = ((x / rect.width) - 0.5) * 12;
+
+    card.style.transform =
+      `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform =
+      "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+  });
+});
+
+// ---------- Cursor Glow ----------
+const cursorGlow = document.createElement("div");
+cursorGlow.className = "cursor-glow";
+document.body.appendChild(cursorGlow);
+
+window.addEventListener("mousemove", (e) => {
+  cursorGlow.style.left = e.clientX + "px";
+  cursorGlow.style.top = e.clientY + "px";
+});
+
+// ---------- Journey Accordion ----------
+const detailsElements = document.querySelectorAll(".journey-details");
+
+detailsElements.forEach(detail => {
+  detail.addEventListener("toggle", () => {
+    if (detail.open) {
+      detailsElements.forEach(other => {
+        if (other !== detail) other.removeAttribute("open");
+      });
     }
   });
-}, { threshold: 0.7 });
+});
 
-statNums.forEach(el => statsObserver.observe(el));
+// ---------- Floating Avatar ----------
+const avatar = document.querySelector(".avatar");
+
+window.addEventListener("scroll", () => {
+  if (!avatar) return;
+
+  const offset = window.scrollY * 0.08;
+  avatar.style.transform = `translateY(${offset}px)`;
+});
+
+// ---------- Smooth Scroll ----------
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+
+    target?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+});
+
+// ---------- Typing Effect ----------
+const role = document.querySelector(".hero-role");
+
+const roles = [
+  "Front-End Developer",
+  "Full-Stack Developer",
+  "UI/UX Designer",
+  "Mechatronic Engineer"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeRole() {
+  if (!role) return;
+
+  const currentRole = roles[roleIndex];
+
+  if (!deleting) {
+    charIndex++;
+    role.textContent = currentRole.slice(0, charIndex);
+  } else {
+    charIndex--;
+    role.textContent = currentRole.slice(0, charIndex);
+  }
+
+  if (!deleting && charIndex === currentRole.length) {
+    deleting = true;
+    setTimeout(typeRole, 1800);
+    return;
+  }
+
+  if (deleting && charIndex === 0) {
+    deleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+  }
+
+  setTimeout(typeRole, deleting ? 45 : 90);
+}
+
+typeRole();
+
+// ---------- Hero Fade on Scroll ----------
+const hero = document.querySelector(".hero-content");
+
+window.addEventListener("scroll", () => {
+  if (!hero) return;
+
+  const opacity = Math.max(1 - window.scrollY / 500, 0);
+  hero.style.opacity = opacity;
+  hero.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+});
